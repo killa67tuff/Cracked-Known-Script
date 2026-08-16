@@ -4793,18 +4793,7 @@ local function StartCheat(keyDuration, keyString, isWhitelisted)
     DropLabel.TextSize = 9
     DropLabel.Parent = DropFrame
     local DropPad = Instance.new("UIPadding") DropPad.PaddingLeft = UDim.new(0, 10) DropPad.Parent = DropLabel
-    
-    local DropBtn = Instance.new("TextButton")
-    DropBtn.Size = UDim2.new(0.55, 0, 0.7, 0)
-    DropBtn.Position = UDim2.new(0.42, 0, 0.15, 0)
-    DropBtn.BackgroundColor3 = Color3.fromRGB(30, 30, 40)
-    DropBtn.TextColor3 = CurrentThemeColor
-    DropBtn.Font = Enum.Font.GothamBold
-    DropBtn.TextSize = 8
-    DropBtn.Text = (Config.InspectorName ~= "" and Config.InspectorName) or "None"
-    DropBtn.Parent = DropFrame
-    local DBCorner = Instance.new("UICorner") DBCorner.CornerRadius = UDim.new(0, 3) DBCorner.Parent = DropBtn
-    
+
     local DropList = Instance.new("ScrollingFrame")
     DropList.Size = UDim2.new(1, -10, 0, 150)
     DropList.Position = UDim2.new(0, 5, 0, 35)
@@ -4964,13 +4953,6 @@ local function StartCheat(keyDuration, keyString, isWhitelisted)
                 local root = char:FindFirstChild("HumanoidRootPart")
                 if root then handle.CFrame = root.CFrame end
             end
-            local weld = Instance.new("WeldConstraint")
-            weld.Part0 = handle
-            weld.Part1 = (targetAttachment and targetAttachment.Parent) or char:FindFirstChild("HumanoidRootPart") or char:FindFirstChild("Head")
-            weld.Parent = handle
-            accessory.Parent = char
-        end
-
         ApplySkinBtn.MouseButton1Click:Connect(function()
             local uid = tonumber(Config.SkinChangerID)
             if not uid then SendNotification("Invalid User ID", 2) return end
@@ -7080,24 +7062,6 @@ local function StartCheat(keyDuration, keyString, isWhitelisted)
     end
 
     do
-    local ThemeContainer = Instance.new("Frame")
-    ThemeContainer.Size = UDim2.new(1, 0, 0, 40)
-    ThemeContainer.BackgroundTransparency = 1
-    ThemeContainer.LayoutOrder = 2
-    ThemeContainer.Parent = Pages.Settings
-    
-    local ThemeLayout = Instance.new("UIListLayout")
-    ThemeLayout.FillDirection = Enum.FillDirection.Horizontal
-    ThemeLayout.Padding = UDim.new(0, 5)
-    ThemeLayout.Parent = ThemeContainer
-    
-    local function createColorBtn(color, name)
-        local btn = Instance.new("TextButton")
-        btn.Size = UDim2.new(0, 30, 0, 30)
-        btn.BackgroundColor3 = color
-        btn.Text = ""
-        btn.Parent = ThemeContainer
-        
         local corner = Instance.new("UICorner")
         corner.CornerRadius = UDim.new(1, 0)
         corner.Parent = btn
